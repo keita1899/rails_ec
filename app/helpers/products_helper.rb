@@ -2,7 +2,7 @@
 
 module ProductsHelper
   def image(product)
-    product.image.attached? ? product.image : 'no-image.jpeg'
+    product.image.attached? ? product.image : 'no-image.jpg'
   end
 
   def format_price(price)
