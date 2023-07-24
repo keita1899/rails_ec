@@ -25,5 +25,5 @@ end
     stock: 1
   )
 
-  product.image.attach(io: File.open(Rails.root.join('app/assets/images/no-image.jpeg')), filename: 'no-image.jpeg')
+  product.image.attach(io: File.open(Rails.root.join('app/assets/images/no-image.jpg')), filename: 'no-image.jpg')
 end
