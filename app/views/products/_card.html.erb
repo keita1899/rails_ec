@@ -12,7 +12,7 @@
             <span class="text-muted text-decoration-line-through"><%= format_price(product.min_price) %></span>
             <span><%= format_price(product.discount_price) %></span>
           <% else %>
-            <%= product.max_price ? "#{format_price(product.min_price)}-#{format_price(product.max_price)}" : format_price(product.min_price) %>
+            <%= product.max_price ? "#{format_price(product.min_price)} - #{format_price(product.max_price)}" : format_price(product.min_price) %>
           <% end %>
         </div>
       </div>
