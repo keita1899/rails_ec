@@ -1,2 +1,1 @@
-import 'popper';
 import 'bootstrap';
