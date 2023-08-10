@@ -6,6 +6,6 @@ module ProductsHelper
   end
 
   def format_price(price)
-    "$#{price}.00"
+    "#{price}円"
   end
 end
