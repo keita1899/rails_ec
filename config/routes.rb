@@ -2,9 +2,7 @@
 
 Rails.application.routes.draw do
   namespace :admin do
-    get 'products/new'
-    get 'products/edit'
-    get 'products/index'
+    resources :products, only: %i[index new create edit update destroy]
   end
   root 'welcome#index'
 
