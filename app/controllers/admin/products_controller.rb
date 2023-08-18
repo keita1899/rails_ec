@@ -40,6 +40,11 @@ module Admin
       end
     end
 
+    def destroy
+      @product.destroy
+      redirect_to admin_products_path, notice: "商品「#{@product.name}」を削除しました。", status: :see_other
+    end
+
     private
 
     def basic_auth
