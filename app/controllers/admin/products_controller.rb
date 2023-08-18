@@ -32,6 +32,14 @@ module Admin
     def edit
     end
 
+    def update
+      if @product.update(product_params)
+        redirect_to admin_products_path, notice: "商品「#{@product.name}」を更新しました。"
+      else
+        render 'admin/products/edit', status: :unprocessable_entity
+      end
+    end
+
     private
 
     def basic_auth

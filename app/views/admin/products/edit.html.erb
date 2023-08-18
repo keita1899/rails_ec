@@ -1,2 +1,8 @@
-<h1>Admin::Products#edit</h1>
-<p>Find me in app/views/admin/products/edit.html.erb</p>
+<div class="d-flex align-items-center justify-content-between mt-5">
+  <h1 class="m-0">商品を編集する</h1>
+  <%= link_to [:admin, @product], data: { turbo_method: :delete, turbo_confirm: "商品「#{@product.name}」を削除してもよろしいですか？" }, class: 'btn btn-dark rounded-circle' do %>
+    <i class="bi bi-trash"></i>
+  <% end %>
+</div>
+<%= render 'share/error_messages', object: @product %>
+<%= render 'form', { product: @product, url: admin_product_path } %>
