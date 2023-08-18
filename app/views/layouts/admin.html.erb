@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html class="h-100">
+  <head>
+    <title>Myapp</title>
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+    <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
+    <%= javascript_include_tag "application", "data-turbo-track": "reload", defer: true %>
+  </head>
+  <body class="h-100">
+    <div class="bg-light">
+      <nav class="navbar container px-4 px-lg-5">
+        <div class="d-flex col-12 col-md-3 col-lg-2 mb-2 mb-lg-0 flex-wrap flex-md-nowrap justify-content-between">
+          <a class="navbar-brand" href="#">
+            Start Bootstrap
+          </a>
+          <button class="navbar-toggler d-md-none collapsed mb-3" type="button" data-bs-toggle="collapse" data-bs-target="#sidebar" aria-controls="sidebar" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+        </div>
+        <div class="col-12 col-md-5 col-lg-8 d-flex align-items-center justify-content-md-end mt-3 mt-md-0">
+          <div class="dropdown">
+            <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-bs-toggle="dropdown" aria-expanded="false">
+              admin
+            </button>
+            <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+              <li><a class="dropdown-item" href="#">設定</a></li>
+              <li><a class="dropdown-item" href="#">ログアウト</a></li>
+            </ul>
+          </div>
+        </div>
+      </nav>
+    </div>
+    <div class="container-fluid">
+      <div class="row">
+        <nav class="col-md-3 col-lg-2 d-md-block bg-secondary sidebar collapse" id="sidebar">
+          <div class="position-sticky pt-md-3">
+            <ul class="nav flex-column">
+              <li class="nav-item">
+                <%= link_to '商品一覧', admin_products_path, class: 'nav-link text-white' %>
+              </li>
+              <li class="nav-item">
+                <%= link_to '商品を登録する', new_admin_product_path, class: 'nav-link text-white' %>
+              </li>
+            </ul>
+          </div>
+        </nav>
+        <div class="col-md-9 ml-sm-auto col-lg-10 px-5 py-4">
+          <%= yield %>
+        </div>
+      </div>
+    </div>
+    <%= render 'share/footer' %>
+  </body>
+</html>
