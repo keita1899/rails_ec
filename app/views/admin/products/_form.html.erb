@@ -1,0 +1,42 @@
+<%= form_with model: product, url: url, class: 'row mt-5', local: true do |f| %>
+  <div class="form-group col-lg-6 d-flex flex-column justify-content-center">
+    <%= image_tag product.image, class: 'img-fluid mb-2' if product.image.attached? %>
+    <%= f.file_field :image, class: 'form-control mt-1' %>
+  </div>
+  <div class="form-group mt-3">
+    <%= f.label :name %>
+    <%= f.text_field :name, class: 'form-control mt-1'%>
+  </div>
+  <div class="form-group mt-3">
+    <%= f.label :description %>
+    <%= f.text_area :description, class: 'form-control mt-1', rows: "5" %>
+  </div>
+  <div class="col-6 col-sm-6 col-md-4">
+    <div class="form-group mt-3">
+      <%= f.label :min_price %>
+      <div class="d-flex align-items-center">
+        <%= f.number_field :min_price, min: 0, class: 'form-control mt-1' %>
+        <span class="ms-1">円</span>
+      </div>
+    </div>
+    <div class="form-group mt-3">
+      <%= f.label :max_price %><span class="badge bg-secondary ms-1">任意</span>
+      <div class="d-flex align-items-center">
+        <%= f.text_field :max_price, min: 0, class: 'form-control mt-1' %>
+        <span class="ms-1">円</span>
+      </div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-4 col-md-3 col-lg-2 form-group mt-3">
+      <%= f.label :stock %>
+      <div class="d-flex align-items-center">
+        <%= f.number_field :stock, min: 0, class: 'form-control mt-1' %>
+        <span class="ms-1">個</span>
+      </div>
+    </div>
+  </div>
+  <div class="form-group mt-3 text-center">
+    <%= f.submit nil, class: 'btn btn-primary btn-lg' %>
+  </div>
+<% end %>
