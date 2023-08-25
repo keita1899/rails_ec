@@ -5,7 +5,7 @@ class Product < ApplicationRecord
 
   scope :recent, -> { order(created_at: :desc) }
 
-  validates :image, presence: true, blob: { content_type: :image, size_range: 1..5.megabytes }
+  validates :image, blob: { content_type: :image, size_range: 1..5.megabytes }
   validates :name, presence: true, length: { maximum: 100 }
   validates :description, presence: true, length: { maximum: 1000 }
   validates :stock, presence: true, numericality: { only_integer: true }
