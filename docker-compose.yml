@@ -18,8 +18,9 @@ services:
       - "3000:3000"
     depends_on:
       - db
-    env_file:
-      - .env
+    environment:
+      BASIC_AUTH_USER: $BASIC_AUTH_USER
+      BASIC_AUTH_PASSWORD: $BASIC_AUTH_PASSWORD
   js:
     image: rails_template:latest
     command: yarn build --watch
