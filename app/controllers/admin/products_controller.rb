@@ -18,10 +18,6 @@ module Admin
     def create
       @product = Product.new(product_params)
 
-      @product.code1 = @product.shuffle_code('A', 'Z', 2)
-      @product.code2 = @product.shuffle_code('A', 'Z', 2)
-      @product.code3 = @product.shuffle_code('0', '9', 2)
-
       if @product.save
         redirect_to admin_products_path, notice: "商品「#{@product.name}」を登録しました。"
       else
