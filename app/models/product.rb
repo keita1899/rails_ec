@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 class Product < ApplicationRecord
-  after_initialize do
+  after_validation do
     self.code1 = shuffle_code('A', 'Z', 2)
     self.code2 = shuffle_code('A', 'Z', 2)
     self.code3 = shuffle_code('0', '9', 2)
