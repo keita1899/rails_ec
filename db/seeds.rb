@@ -13,7 +13,7 @@ def shuffle_code(first_str, last_str, length)
 end
 
 4.times do |_n|
-  product1 = Product.create!(
+  product1 = Product.new(
     code1: shuffle_code('A', 'Z', 2),
     code2: shuffle_code('A', 'Z', 2),
     code3: shuffle_code('0', '9', 2),
@@ -24,10 +24,12 @@ end
   )
 
   product1.image.attach(io: File.open(Rails.root.join('app/assets/images/450300.jpg')), filename: '450300.jpg')
+
+  product1.save!
 end
 
 3.times do |_n|
-  product2 = Product.create!(
+  product2 = Product.new(
     code1: shuffle_code('A', 'Z', 2),
     code2: shuffle_code('A', 'Z', 2),
     code3: shuffle_code('0', '9', 2),
@@ -39,10 +41,12 @@ end
   )
 
   product2.image.attach(io: File.open(Rails.root.join('app/assets/images/450300.jpg')), filename: '450300.jpg')
+
+  product2.save!
 end
 
 3.times do |_n|
-  product3 = Product.create!(
+  product3 = Product.new(
     code1: shuffle_code('A', 'Z', 2),
     code2: shuffle_code('A', 'Z', 2),
     code3: shuffle_code('0', '9', 2),
@@ -55,4 +59,6 @@ end
   )
 
   product3.image.attach(io: File.open(Rails.root.join('app/assets/images/450300.jpg')), filename: '450300.jpg')
+
+  product3.save!
 end
