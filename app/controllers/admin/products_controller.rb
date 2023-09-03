@@ -21,7 +21,7 @@ module Admin
       if @product.save
         redirect_to admin_products_path, notice: "商品「#{@product.name}」を登録しました。"
       else
-        render new_admin_product_path(@product), status: :unprocessable_entity
+        render :new, status: :unprocessable_entity
       end
     end
 
@@ -31,7 +31,7 @@ module Admin
       if @product.update(product_params)
         redirect_to admin_products_path, notice: "商品「#{@product.name}」を更新しました。"
       else
-        render 'admin/products/edit', status: :unprocessable_entity
+        render :edit, status: :unprocessable_entity
       end
     end
 
