@@ -4,11 +4,12 @@ class ProductsController < ApplicationController
   layout 'product'
 
   def index
-    @products = Product.all
+    @products = Product.recent.all
   end
 
   def show
     @product = Product.find(params[:id])
     @recent_products = Product.recent.limit(4)
+    @cart_item = current_cart.cart_items.new
   end
 end
