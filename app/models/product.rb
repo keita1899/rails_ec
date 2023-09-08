@@ -18,11 +18,17 @@ class Product < ApplicationRecord
   validates :description, presence: true, length: { maximum: 1000 }
   validates :stock, presence: true, numericality: { only_integer: true }
   validates :min_price, presence: true, numericality: { only_integer: true }
-  validates :max_price, numericality: { only_integer: true, allow_nil: true, greater_than: :min_price }
+  validate :max_price_grater_than_min_price
 
   private
 
   def shuffle_code(first_str, last_str, length)
     (first_str..last_str).to_a.shuffle[0..length].join
+  end
+
+  def max_price_grater_than_min_price
+    if max_price && max_price <= min_price
+      errors.add(:max_price, 'は最低価格より大きい値にしてください')
+    end
   end
 end
