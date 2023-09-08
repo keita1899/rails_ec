@@ -1,6 +1,6 @@
 class CartsController < ApplicationController
 
-    before_action :set_cart_item!, only: %i[add_item add_items]
+    before_action :set_cart_item!, only: %i[add_item add_items delete_item]
 
     def checkout
         @cart_items = current_cart.cart_items
@@ -31,6 +31,14 @@ class CartsController < ApplicationController
             @product = Product.find_by(id: params[:product_id])
             @recent_products = Product.recent.limit(4)
             render 'products/show', status: :unprocessable_entity
+        end
+    end
+
+    def delete_item
+        if @cart_item.destroy
+            redirect_to checkout_path, notice: "カートの商品を削除しました。"
+        else
+            render :checkout, status: :see_other
         end
     end
 

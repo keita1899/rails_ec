@@ -10,4 +10,5 @@ Rails.application.routes.draw do
   get "checkout" => "carts#checkout" 
   post "add_item/:product_id" => "carts#add_item"
   post "add_items/:product_id" => "carts#add_items"
+  delete "delete_item/:product_id" => "carts#delete_item"
 end
