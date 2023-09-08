@@ -1,4 +1,4 @@
-<% if object.errors.present? %>
+<% if object.errors.any? %>
   <ul class="alert alert-danger">
     <% object.errors.full_messages.each do |message| %>
       <li class="list-unstyled"><%= message %></li>
