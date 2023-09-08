@@ -16,13 +16,14 @@
           <% end %>
         </div>
         <p class="lead"><%= @product.description %></p>
-        <div class="d-flex">
-          <input class="form-control text-center me-3" id="inputQuantity" type="num" value="1" style="max-width: 3rem">
-          <button class="btn btn-outline-dark flex-shrink-0" type="button">
+        <%= form_with url: "/add_items/#{@product.id}", class: 'd-flex' do |f| %>
+          <%= f.number_field :quantity, class: 'form-control text-center me-3', style: 'max-width: 4rem', value: '0' %>
+          <%= button_tag type: 'submit', class: 'btn btn-outline-dark flex-shrink-0' do %>
             <i class="bi-cart-fill me-1"></i>
             カートに追加
-          </button>
-        </div>
+          <% end %>
+        <% end %>
+        <%= render 'share/error_messages', object: @cart_item %>
       </div>
     </div>
   </div>

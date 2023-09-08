@@ -9,4 +9,5 @@ Rails.application.routes.draw do
   resources :products, only: %i[index show]
   get "checkout" => "carts#checkout" 
   post "add_item/:product_id" => "carts#add_item"
+  post "add_items/:product_id" => "carts#add_items"
 end

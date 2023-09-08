@@ -17,6 +17,10 @@ ja:
         max_price: 最高価格
         created_at: 登録日時
         updated_at: 更新日時
+      cart_item:
+        cart_id: カートID
+        product_id: 商品ID
+        quantity: 数量
   date:
     abbr_day_names:
     - 日

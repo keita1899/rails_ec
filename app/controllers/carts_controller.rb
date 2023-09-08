@@ -1,6 +1,6 @@
 class CartsController < ApplicationController
 
-    before_action :set_cart_item!, only: %i[add_item ]
+    before_action :set_cart_item!, only: %i[add_item add_items]
 
     def checkout
         @cart_items = current_cart.cart_items
@@ -17,6 +17,20 @@ class CartsController < ApplicationController
             flash.now[:alert] = "カートに追加できませんでした。"
             @products = Product.recent.all
             render 'products/index', status: :unprocessable_entity
+        end
+    end
+
+    def add_items
+        @cart_item = current_cart.cart_items.build(product_id: params[:product_id]) if @cart_item.nil?
+        @cart_item.quantity += params[:quantity].to_i
+
+        if @cart_item.save
+            redirect_to product_path(params[:product_id]), notice: "カートに追加されました。"
+        else
+            flash.now[:alert] = "カートに追加できませんでした。"
+            @product = Product.find_by(id: params[:product_id])
+            @recent_products = Product.recent.limit(4)
+            render 'products/show', status: :unprocessable_entity
         end
     end
 
