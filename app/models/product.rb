@@ -7,6 +7,8 @@ class Product < ApplicationRecord
     self.code3 = shuffle_code('0', '9', 2)
   end
 
+  has_many :cart_items, dependent: :destroy
+
   has_one_attached :image
 
   scope :recent, -> { order(created_at: :desc) }

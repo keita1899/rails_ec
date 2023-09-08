@@ -7,4 +7,6 @@ Rails.application.routes.draw do
   root 'welcome#index'
 
   resources :products, only: %i[index show]
+  get "checkout" => "carts#checkout" 
+
 end
