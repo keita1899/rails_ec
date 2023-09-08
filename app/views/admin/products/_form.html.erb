@@ -22,7 +22,7 @@
     <div class="form-group mt-3">
       <%= f.label :max_price %><span class="badge bg-secondary ms-1">任意</span>
       <div class="d-flex align-items-center">
-        <%= f.text_field :max_price, min: 0, class: 'form-control mt-1' %>
+        <%= f.number_field :max_price, min: 0, class: 'form-control mt-1' %>
         <span class="ms-1">円</span>
       </div>
     </div>
