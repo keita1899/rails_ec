@@ -1,9 +1,9 @@
 # frozen_string_literal: true
 
 class CartsController < ApplicationController
-  before_action :set_cart_item!, only: %i[add_item add_items delete_item]
+  before_action :set_cart_item!, only: %i[add_item add_items destroy]
 
-  def checkout
+  def index
     @cart_items = current_cart.cart_items
     render layout: 'checkout'
   end
@@ -35,7 +35,7 @@ class CartsController < ApplicationController
     end
   end
 
-  def delete_item
+  def destroy
     if @cart_item.destroy
       redirect_to checkout_path, notice: 'カートの商品を削除しました。'
     else
