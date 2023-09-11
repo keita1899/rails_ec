@@ -97,5 +97,8 @@
     <!-- Custom styles for this template -->
     <link href="https://getbootstrap.com/docs/5.3/examples/checkout/checkout.css" rel="stylesheet">
   </head>
-  <%= yield %>
+  <body class="bg-body-tertiary">
+    <%= render 'share/flash_message' %>
+    <%= yield %>
+  </body>
 </html>
