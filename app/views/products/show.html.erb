@@ -16,7 +16,7 @@
           <% end %>
         </div>
         <p class="lead"><%= @product.description %></p>
-        <%= form_with url: "/add_items/#{@product.id}", class: 'd-flex', local: true, data: { turbo: false } do |f| %>
+        <%= form_with url: "/create/#{@product.id}", class: 'd-flex', local: true, data: { turbo: false } do |f| %>
           <%= f.number_field :quantity, class: 'form-control text-center me-3', style: 'max-width: 4rem', min: 1, value: '1' %>
           <%= button_tag type: 'submit', class: 'btn btn-outline-dark flex-shrink-0' do %>
             <i class="bi-cart-fill me-1"></i>
