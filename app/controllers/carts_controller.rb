@@ -4,7 +4,7 @@ class CartsController < ApplicationController
   before_action :set_cart_item!, only: %i[add_item add_items destroy]
 
   def index
-    @cart_items = current_cart.cart_items
+    @cart_items = current_cart.cart_items.order(created_at: :desc)
     render layout: 'checkout'
   end
 
