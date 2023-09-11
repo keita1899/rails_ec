@@ -17,7 +17,7 @@ class CartsController < ApplicationController
     else
       flash.now[:alert] = 'カートに追加できませんでした。'
       @products = Product.recent.all
-      render 'products/index', status: :unprocessable_entity, layout: "product"
+      render 'products/index', status: :unprocessable_entity, layout: 'product'
     end
   end
 
@@ -31,7 +31,7 @@ class CartsController < ApplicationController
       flash.now[:alert] = 'カートに追加できませんでした。'
       @product = Product.find_by(id: params[:product_id])
       @recent_products = Product.recent.limit(4)
-      render 'products/show', status: :unprocessable_entity, layout: "product"
+      render 'products/show', status: :unprocessable_entity, layout: 'product'
     end
   end
 
