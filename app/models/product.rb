@@ -27,8 +27,8 @@ class Product < ApplicationRecord
   end
 
   def max_price_grater_than_min_price
-    if max_price && max_price <= min_price
-      errors.add(:max_price, 'は最低価格より大きい値にしてください')
-    end
+    return unless max_price && max_price <= min_price
+
+    errors.add(:max_price, 'は最低価格より大きい値にしてください')
   end
 end
