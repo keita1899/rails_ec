@@ -9,18 +9,16 @@ class CartsController < ApplicationController
   end
 
   def create
-    @cart_item = current_cart.cart_items.build(product_id: params[:product_id]) if @cart_item.nil?
-    @cart_item.quantity += params[:quantity].nil? ? 1 : params[:quantity].to_i
+    increase(params[:product_id], params[:quantity])
 
     if @cart_item.save
       redirect_to params[:quantity].nil? ? request.referer : product_path(params[:product_id]), notice: 'カートに追加されました。'
     else
-      flash.now[:alert] = 'カートに追加できませんでした。'
-
+      
       if params[:quantity].nil?
-        @products = Product.recent.all
-        render 'products/index', status: :unprocessable_entity, layout: 'product'
+        redirect_to request.referer, alert: 'カートに追加できませんでした。'
       else
+        flash.now[:alert] = 'カートに追加できませんでした。'
         @product = Product.find_by(id: params[:product_id])
         @recent_products = Product.recent.limit(4)
         render 'products/show', status: :unprocessable_entity, layout: 'product'
@@ -40,5 +38,11 @@ class CartsController < ApplicationController
 
   def set_cart_item!
     @cart_item = current_cart.cart_items.find_by(product_id: params[:product_id])
+  end
+
+  def increase(product_id, quantity)
+    @cart_item = current_cart.cart_items.build(product_id: product_id) if @cart_item.nil?
+    @cart_item.quantity += quantity.nil? ? 1 : quantity.to_i
+    @cart_item
   end
 end
