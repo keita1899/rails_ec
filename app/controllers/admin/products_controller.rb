@@ -8,7 +8,7 @@ module Admin
     before_action :set_product, only: %i[edit update destroy]
 
     def index
-      @products = Product.all.page(params[:page]).per(10).recent
+      @products = Product.products_per_page(params[:page])
     end
 
     def new

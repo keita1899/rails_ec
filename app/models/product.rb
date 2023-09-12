@@ -20,6 +20,10 @@ class Product < ApplicationRecord
   validates :min_price, presence: true, numericality: { only_integer: true }
   validate :max_price_grater_than_min_price
 
+  def self.products_per_page(page)
+    Product.all.page(page).per(10).recent
+  end
+
   private
 
   def shuffle_code(first_str, last_str, length)
