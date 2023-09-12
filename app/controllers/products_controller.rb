@@ -4,7 +4,7 @@ class ProductsController < ApplicationController
   layout 'product'
 
   def index
-    @products = Product.recent.all
+    @products = Product.products_per_page(params[:page])
   end
 
   def show

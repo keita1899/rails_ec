@@ -13,5 +13,8 @@
         <%= render '/products/card', product: product %>
       <% end %>
     </div>
+    <div class="d-flex justify-content-center mt-5">
+      <%= paginate @products, theme: 'bootstrap-5' %>　
+    </div>
   </div>
 </section>
