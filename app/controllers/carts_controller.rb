@@ -13,16 +13,13 @@ class CartsController < ApplicationController
 
     if @cart_item.save
       redirect_to params[:quantity].nil? ? request.referer : product_path(params[:product_id]), notice: 'カートに追加されました。'
+    elsif params[:quantity].nil?
+      redirect_to request.referer, alert: 'カートに追加できませんでした。'
     else
-      
-      if params[:quantity].nil?
-        redirect_to request.referer, alert: 'カートに追加できませんでした。'
-      else
-        flash.now[:alert] = 'カートに追加できませんでした。'
-        @product = Product.find_by(id: params[:product_id])
-        @recent_products = Product.recent.limit(4)
-        render 'products/show', status: :unprocessable_entity, layout: 'product'
-      end
+      flash.now[:alert] = 'カートに追加できませんでした。'
+      @product = Product.find_by(id: params[:product_id])
+      @recent_products = Product.recent.limit(4)
+      render 'products/show', status: :unprocessable_entity, layout: 'product'
     end
   end
 
